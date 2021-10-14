@@ -1,0 +1,33 @@
+classdef StochasticMarkov
+    %UNTITLED7 Summary of this class goes here
+    %   Detailed explanation goes here
+
+    properties
+        % (name) type value
+        groups Table
+
+        transitions Table
+    end
+
+    methods
+        function obj = StochasticMarkov()
+            obj.groups = table();
+            obj.groups.Properties.DimensionNames = {'group', 'field'};
+            obj.groups.Properties.VariableNames = ['name' 'type'];
+            obj.groups.Properties.VariableTypes = ['string' 'type'];
+            obj.groups.Properties.RowNames = name;
+
+            obj.transitions = table();
+            obj.transitions.Properties.DimensionNames = {'transition' 'field'};
+            obj.transitions.Properties.VariableNames = ['table' 'group' 'change'];
+            obj.transitions.Properties.VariableTypes = ['table' 'string' 'object'];
+        end
+
+        function gref = ref(obj,gname)
+            gref = {
+                "table" : obj,
+                "group" : obj.realgroup(gname),
+            };
+        end
+    end
+end

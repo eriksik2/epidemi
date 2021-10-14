@@ -1,0 +1,17 @@
+
+
+stoc = 
+
+x0 = [
+    % S : antalet mottagliga för sjukdomen
+    995;
+    % I : antalet infekterade
+    5;
+    0;
+];
+span = [0 120];
+
+[t, x] = SSA(@prop, @stoc, x0, span, p);
+
+sirPlot = figure;
+plot(t, x);

@@ -1,0 +1,20 @@
+function [dx] = sirSDE(x, t, konst)
+    % N : storleken på populationen
+    % konst.Beta : andelen mottagliga som blir exponerade för smitta per tidsenhet
+    % konst.gamma : andelen sjuka som tillfrisknar per tidsenhet
+    
+    % 
+
+    % S : antalet mottagliga för sjukdomen
+    % I : antalet infekterade
+    [S, I, R] = x(1:3);
+    N = sum(x(1:3));
+    dx = [
+        % S'(t)
+        -konst.Beta*I*S/N;
+        % I'(t)
+        konst.Beta*I*S - konst.gamma*I;
+        % R'(t)
+        konst.gamma*I
+    ];
+end
